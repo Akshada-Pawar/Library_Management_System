@@ -182,7 +182,7 @@ if __name__ == '__main__':
             students = tuple(book_tracking.students_with_books())
             if students:
                 for name, book in students:
-                    print(f"{name}: {book}")
+                    print("{name}: {book}")
             else:
                 print("\nNo students have borrowed books at the moment")
 
