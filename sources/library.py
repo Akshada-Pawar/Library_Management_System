@@ -92,12 +92,12 @@ class Library:
 
     def lend_book(self, requested_book):  # Request for a book
         if requested_book in self.books:
-            print(f"\n You have now borrowed {requested_book}.")
+            print("\n You have now borrowed {requested_book}.")
             self.books.remove(requested_book)
             return True
 
         else:
-            print(f"\n Sorry, {requested_book} is not there in our library at the moment")
+            print("\n Sorry, {requested_book} is not there in our library at the moment")
             return False
 
 
