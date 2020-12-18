@@ -121,7 +121,7 @@ class Student:
 
     def return_book(self, name, book, library):
         if book not in self.books[name]:
-            raise NoBook(f'''\n\"{name}\" doesn't seem to have borrowed "{book}"''')
+            raise NoBook("\n{name} doesn't seem to have borrowed {book}")
             return False
         else:
             library.add_book(book)
