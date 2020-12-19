@@ -1,12 +1,6 @@
 pipeline {
     agent none
     stages {
-        stage('Start'){
-            steps{
-                // Send build started notifications
-                sendNotificatins 'STARTED'
-            }
-        }
         stage('Build') {
             agent {
                 docker {
