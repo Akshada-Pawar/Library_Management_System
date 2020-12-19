@@ -90,7 +90,6 @@ th, td#t01{
   </tr>
   </table>""",
             //recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-                }
             }
         }
         }
