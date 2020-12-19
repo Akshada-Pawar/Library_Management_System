@@ -21,7 +21,7 @@ pipeline {
                 success{
                     mail to:"pawarakshada13@gmail.com", subject:"SUCCESS ${currentBuild.fullDisplayName}", body: "We passed all test cases."
                     // Archive the built artifacts
-                    archive includes:'pkg/*.gem'
+                    //archive includes:'pkg/*.gem'
                 }
                 failure{
                     mail to:"pawarakshada13@gmail.com", subject:"FAILURE ${currentBuild.fullDisplayName}", body: "We failed test cases."
