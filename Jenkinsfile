@@ -22,6 +22,21 @@ pipeline {
                 sh 'py.test --junit-xml test-reports/results.xml sources/library_test.py' 
             }
         }
+        stage('Deliver') {
+            agent {
+                docker {
+                    image 'cdrx/pyinstaller-linux:python2'
+                }
+            }
+            steps {
+                sh 'pyinstaller --onefile sources/library.py'
+            }
+            post {
+                success {
+                    archiveArtifacts 'dist/library'
+                }
+            }
+        }
         stage('Email'){
             steps{
                 always{
@@ -74,7 +89,7 @@ th, td#t01{
     <td>${env.BUILD_URL}</td>
   </tr>
   </table>""",
-            recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+            //recipientProviders: [[$class: 'DevelopersRecipientProvider']]
                 }
             }
         }
