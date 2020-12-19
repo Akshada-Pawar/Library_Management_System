@@ -88,9 +88,10 @@ th, td#t01{
     <td><b>BUILD Logs</b></td>
     <td>${env.BUILD_URL}</td>
   </tr>
-  </table>""",
+  </table>"""
             //recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-            }
         }
         }
+    }
+    }
 }
