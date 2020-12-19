@@ -11,16 +11,6 @@ pipeline {
                 sh 'python -m py_compile sources/library.py'
                 stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
-            post{
-                success{
-                    mail to:"pawarakshada13@gmail.com", subject:"SUCCESS ${currentBuild.fullDisplayName}", body: "We passed all test cases."
-                    // Archive the built artifacts
-                    //archive includes:'pkg/*.gem'
-                }
-                failure{
-                    mail to:"pawarakshada13@gmail.com", subject:"FAILURE ${currentBuild.fullDisplayName}", body: "We failed test cases."
-                }
-            }
         }
         stage('Test') { 
             agent {
@@ -32,12 +22,11 @@ pipeline {
                 sh 'py.test --junit-xml test-reports/results.xml sources/library_test.py' 
             }
             post{
-                success{
-                    mail to:"pawarakshada13@gmail.com", subject:"SUCCESS ${currentBuild.fullDisplayName}", body: "We passed all test cases."
+                always{
+                    mail to:"pawarakshada13@gmail.com", subject:"Status of pipeline: ${currentBuild.fullDisplayName}", 
+                    body: "Library Management System Application keeps the track of the books present in the library.
+                            ${env.BUILD_URL} has result ${currentBuild.result}."
                     
-                }
-                failure{
-                    mail to:"pawarakshada13@gmail.com", subject:"FAILURE ${currentBuild.fullDisplayName}", body: "We failed test cases."
                 }
             }
         }
