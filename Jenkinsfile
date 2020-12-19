@@ -54,12 +54,6 @@ pipeline {
                     mail to:"pawarakshada13@gmail.com", subject:"FAILURE ${currentBuild.fullDisplayName}", body: "We failed test cases."
                 }
             }
-            post {
-                always {
-                    //junit 'test-reports/results.xml'
-                    sendNotificatins currentBuild.result 
-                }
-            }
         }
     }
 }
