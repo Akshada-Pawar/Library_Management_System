@@ -21,6 +21,7 @@ pipeline {
             steps {
                 sh 'py.test --junit-xml test-reports/results.xml sources/library_test.py' 
             }
+        }
         stage('Email'){
             steps{
                 always{
